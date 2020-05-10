@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="icon" href="../hard/icons8-comet-48.png">
+    <link rel="stylesheet" href="hard.css">
+    <title>Jusfayu</title>
+</head>
+
+<body id="body" onload="fegu();run();">
+    <center> <canvas id="canvas" height="600" width="800"></canvas> </center>
+    <img src="../easy/pause.png" id="pause" onclick="pause()">
+    <img src="../easy/play.png" id="play" onclick="resume()">
+    <div id="instructions">
+        INSRUCTIONS
+        <ul style="text-align:left;font-family: 'arial';font-size: 24px;font-weight: 400;margin-left: 24%;margin-top: 4%;color: white;text-shadow: none"><br>
+            <li>Pass the ball through obstacles of same color</li>
+            <li>The score is displayed on the top left corner of canvas.</li>
+            <li>Use 'uparrow' to move the ball</li>
+        </ul>
+        <button onclick="document.getElementById('instructions').style.display = 'none'"> BEGIN </button>
+    </div>
+
+    
+
+</body>
+
+
+<audio autoplay loop>
+	<source src="../hard/backgrd.mp3" type="audio/mpeg">
+</audio>
+
+</html>
+<script src="../hard/hard.js"></script>

@@ -1,0 +1,73 @@
+@font-face {
+    font-family: gist;
+    src: url(../multi/ToetheLineless.ttf);
+}
+
+html {
+    background-color: black;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#canvas {
+    border-radius: 5%;
+    position: absolute;
+    left:3%;
+}
+
+#instructions {
+    position: fixed;
+    font-size: 4rem;
+    font-family: gist;
+    color: #084B83;
+    text-align: center;
+    top: 0;
+    left: 0;
+    border: transparent;
+    position: fixed;
+    width: 100%;
+    height:100%;
+    padding: 10% 0;
+    border-color: black;
+    background-color: black;
+}
+
+#pause, #play{
+    position: fixed;
+    
+}
+
+#pause{
+    top:20%;
+    left:44%;
+}
+
+#play{
+    top:20%;
+    left:52%;
+}
+
+#canvas2{
+    border-radius: 5%;
+    background-color: black;
+    position: absolute;
+    right:3%;
+}
+button{
+    width: 20%;
+    height:8%;
+    margin-top: 8%;
+    border-radius: 5%;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #0D324D;
+    color: white;
+    border-width: 0px;
+    border:transparent;
+}
+
+button:hover{
+    box-shadow: 0 0 5px #0D324D, 0 0 10px #0D324D, 0 0 20px #0D324D ;
+}

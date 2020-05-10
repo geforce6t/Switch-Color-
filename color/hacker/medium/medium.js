@@ -108,8 +108,8 @@ function run() {
             score++;
         }
         ctx.fillText('Game Over', canvas.width / 2.3, 100);
-        ctx.fillText('Score: ' + (score - 1) * 400, canvas.width / 2.3, 300);
-        ctx.fillText('High Score: ' + ((gijya[gijya.length - 1]) - 1) * 400, canvas.width / 2.5, 400);
+        ctx.fillText('Score: ' + score, canvas.width / 2.3, 300);
+        ctx.fillText('High Score: ' + gijya[gijya.length - 1], canvas.width / 2.5, 400);
         ctx.fillText('Click uparrow to refresh high score', 100, 500);
     }
 }

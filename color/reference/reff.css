@@ -1,0 +1,40 @@
+body{
+
+	overflow: hidden;
+	background-image: url(https://wallpaperplay.com/walls/full/0/1/8/33407.jpg);
+	background-size: cover;
+}
+button{
+	width: 20%;
+	height: 7%;
+	font-size: 20px;
+	font-family: arial;
+	border-radius: 7%;
+	border-width: 0;
+	border: transparent;
+	background-color: #0D324D;
+	color: white;
+	text-decoration: none;
+}
+
+button:hover{
+    box-shadow: 0 0 5px #0D324D, 0 0 10px #0D324D, 0 0 20px #0D324D ;
+}
+
+#one{
+	position: absolute;
+	top:25%;
+	left:60%;
+}
+#two{
+	position: absolute;
+	top:55%;
+	left:60%;
+
+}
+#three{
+	position: absolute;
+	top:85%;
+	left:60%;
+
+}

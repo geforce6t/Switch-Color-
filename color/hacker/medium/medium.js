@@ -162,7 +162,7 @@ function createhuddle_() {
 
 
         }
-        if (ball.y_coordinate + 6 < scroll(huddle[x].yo) + 6 && ball.y_coordinate > scroll(huddle[x].yo) - 6 && huddle[x].test == true) {
+        if (ball.y_coordinate + ball.r < scroll(huddle[x].yo) + ball.r && ball.y_coordinate > scroll(huddle[x].yo) - ball.r && huddle[x].test == true) {
             score++;
             huddle[x].test = false;
             ball.color = color[Math.floor(Math.random() * color.length)];

@@ -2,6 +2,14 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var ctx = canvas.getContext('2d');
+if (screen.width > 900){
+    canvas.height = screen.height;
+    canvas.width = screen.width/1.7;
+}else{
+    canvas.height = screen.height*2.5;
+    canvas.width = screen.width*2.1;
+}
+
 var Ay = 0;
 var Vy = 0;
 var score = 0;
@@ -25,8 +33,8 @@ var flag = false;
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var ball = {
     x_coordinate: canvas.width / 2,
-    y_coordinate: canvas.height * 5 / 6,
-    r: 6,
+    y_coordinate: canvas.height * 2/3,
+    r: canvas.height/100,
     color: color[Math.floor(Math.random() * color.length)],
 };
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -53,7 +61,7 @@ Storage.prototype.pushArrayItem = function(arrayName, arrayItem) {
 function fegu() {
 
     for (x = post; x < 5; x++) {
-        huddle.push(new circles(canvas.width / 2, y - 950 - x * 400, 0, 0.02 + x * 0.0005, true, true));
+        huddle.push(new circles(canvas.width / 2, y - 1180 - x * (canvas.height/1.5), 0, 0.02 + x * 0.0005, true, true));
     }
 
 }
@@ -84,10 +92,10 @@ function run() {
         }
 
         assa[assa.length - 1]
-        ctx.font = "30px arial";
+        ctx.font = canvas.height/20 +"px arial";
         ctx.fillStyle = "white";
-        ctx.fillText(score, 30, 60);
-        ctx.fillText('High Score: ' + igloo, 550, 60);
+        ctx.fillText(score, 20, 100);
+        ctx.fillText(igloo, canvas.width - 140, 100);
     } else {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(background, 0, 0);
@@ -100,10 +108,12 @@ function run() {
         if (score == 0) {
             score++;
         }
-        ctx.fillText('Game Over', canvas.width / 2.3, 100);
-        ctx.fillText('Score: ' + score, canvas.width / 2.3, 300);
-        ctx.fillText('High Score: ' + (gijya[gijya.length - 1]), canvas.width / 2.5, 400);
-        ctx.fillText('Click uparrow to update high score', 80, 500);
+        document.getElementById('restart').style.display = 'block';
+        ctx.fillText('Score: ' + score , canvas.width / 3, canvas.height/3);
+        ctx.fillText('High Score: ' + gijya[gijya.length - 1], canvas.width / 4, canvas.height/2);
+        ctx.font = canvas.height/35 +"px arial";
+        ctx.fillStyle = "white";
+        ctx.fillText('Click to update high score', 10 , canvas.height/1.8);
     }
 }
 
@@ -115,15 +125,16 @@ function jump() {
     ctx.closePath();
     ctx.fillStyle = ball.color;
     ctx.fill();
-    if (ball.y_coordinate < 300) {
-        screen -= -1.5;
+    if (ball.y_coordinate < canvas.height/2) {
+        screen -= -canvas.height/400;
     }
     ball.y_coordinate += Vy - Ay;
-    Ay -= 0.3;
-    if (ball.y_coordinate + ball.r > 627 && end == false) {
+    Ay -= canvas.height/2500;
+    if (ball.y_coordinate + ball.r > canvas.height && end == false) {
         terminate();
     }
 }
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -171,11 +182,9 @@ class circles {
         var rot = 0;
         var color = "";
 
-        drawStar(this.x_coordinate, scroll(this.yo), 7, 7, 15, -18, '#048A81', 'white', 3);
-
         for (var i = 0; i < 40; i++) {
-            x0 = 100 * Math.cos(this.rot * (Math.PI / 180)) + this.x_coordinate;
-            y0 = 100 * Math.sin(this.rot * (Math.PI / 180)) + scroll(this.yo);
+            x0 = canvas.height/7 * Math.cos(this.rot * (Math.PI / 180)) + this.x_coordinate;
+            y0 = canvas.height/7 * Math.sin(this.rot * (Math.PI / 180)) + scroll(this.yo);
             if (i < 10) {
                 color = '#F8333C';
             } else if (i >= 10 && i < 20) {
@@ -186,12 +195,13 @@ class circles {
                 color = '#DBD5B5';
             }
             ctx.beginPath();
-            ctx.arc(x0, y0, 6, Math.PI / 180 * 0, Math.PI / 180 * 360, true);
+            ctx.arc(x0, y0, ball.r, Math.PI / 180 * 0, Math.PI / 180 * 360, true);
             ctx.closePath();
             ctx.fillStyle = color;
             ctx.fill();
+            drawStar(this.x_coordinate,scroll(this.yo) , 5, 10, 20, 20, 'black', 'white', 5);
             this.rot += rad + this.theta;
-            if (x0 - 6 <= ball.x_coordinate + 6 && x0 + 6 >= ball.x_coordinate - 6 && y0 - 6 <= ball.y_coordinate + 6 && y0 + 6 >= ball.y_coordinate - 6) {
+            if (x0 -  ball.r <= ball.x_coordinate +  ball.r && x0 +  ball.r >= ball.x_coordinate -  ball.r && y0 -  ball.r <= ball.y_coordinate +  ball.r && y0 +  ball.r >= ball.y_coordinate - 6) {
                 if (ball.color != color) {
                     terminate();
                 }
@@ -200,23 +210,25 @@ class circles {
         }
     }
     remove(i) {
-        if (scroll(this.yo - 100) > canvas.height) {
+        if (scroll(this.yo - canvas.height/6) > canvas.height) {
             huddle.splice(i, 1);
-            huddle.push(new circles(canvas.width / 2, this.yo - 2000, 0, 0.02 + this.theta + 0.0025, true, true));
+            huddle.push(new circles(canvas.width / 2, this.yo - (canvas.height/1.5)*5, 0, this.theta + 0.0025, true, true));
         }
     }
 }
 
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-document.addEventListener('keyup', function(event) {
+function saaa() {
     if (start == false) {
         start = true;
         run();
     }
     document.getElementById('instructions').style.display = 'none';
     Ay = 0;
-    Vy = -4;
-  });
+    Vy = -canvas.height/150;
+  };
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -254,4 +266,7 @@ function resume(){
         run();
     }
     
+}
+function restart(){
+    location.reload();
 }

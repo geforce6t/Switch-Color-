@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="../reference/icons8-comet-48.png">
 	<link rel="stylesheet" type="text/css" href="../reference/reference.css">
 	<title>Hacker+</title>
@@ -8,8 +9,17 @@
 <body>
 	<img src="https://pngimage.net/wp-content/uploads/2018/05/cool-logo-png.png">
 	<a href="https://geforce6t.github.io/color/color/hacker+++/hacker+/hacker+.html"><button id="one">Solo</button></a>
-	<a href="https://geforce6t.github.io/color/color/hacker+++/multi/multi.html"><button id="two">Multiplayer</button></a>
+	<button id="two" onclick="check()">Multiplayer</button>
 	
 
 </body>
+<script type="text/javascript">
+	function check(){
+		if (screen.width > 900 ){
+			window.open("https://geforce6t.github.io/color/color/hacker+++/multi/multi.html");
+		}else{
+			window.open("https://geforce6t.github.io/color/color/hacker+++/mobile/mobile.html");
+		}
+	}
+</script>
 </html>

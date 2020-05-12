@@ -1,8 +1,7 @@
 body{
 
 	overflow: hidden;
-	background-image: url(https://wallpaperplay.com/walls/full/0/1/8/33407.jpg);
-	background-size: cover;
+	background-color: #636363;
 }
 button{
 	width: 20%;
@@ -30,5 +29,22 @@ button:hover{
 	position: absolute;
 	top:70%;
 	left:60%;
+
+}
+
+@media (min-width: 300px) and (max-width: 600px){
+	#one,#two,#three{
+		top:110%;
+	}
+	#one{
+		left:30%;
+	}
+	#two{
+		left:90%;
+	}
+	button{
+		width: 30%;
+	}
+
 
 }

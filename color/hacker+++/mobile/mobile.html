@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <link rel="icon" href="../mobile/icons8-comet-48.png">
+    <link rel="stylesheet" href="mobile.css">
+    <title>Jusfayu</title>
+</head>
+
+<body id="body" onload="fegu();run();fegu2();run2();">
+    <center><canvas id="canvas" height="770" width="1100" onclick="saaa()"></canvas></center> 
+     <center><canvas id="canvas2" height="770" width="1100" onclick="saaas()"></canvas> </center>
+
+     <button id="restart" onclick="restart()">Restart</button> 
+
+
+    <div id="instructions">
+        <p id="title">INSRUCTIONS</p>
+        <ul><br>
+            <li>Pass the ball through obstacles of same color</li>
+            <li>The score is displayed on the top left corner of canvas.</li>
+            <li>The high score is displayed on the top right corner of canvas.</li>
+            <li>Click to move the ball</li>
+            <li>The power ball will cross all obstacles</li>
+        </ul>
+        <button onclick="document.getElementById('instructions').style.display = 'none'"> BEGIN </button>
+    </div>
+         
+
+     
+
+</body>
+
+
+<audio autoplmediumay loop>
+    <source src="../mobile/backgrd.mp3" type="audio/mpeg">
+</audio>
+
+</html>
+<script src="../mobile/mobile.js"></script>
+<script src="../mobile/mobile2.js"></script>

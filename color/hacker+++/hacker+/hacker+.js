@@ -1,17 +1,17 @@
 
 
-var addEvent = document.addEventListener ? function(target,type,action){
-    if(target){
-        target.addEventListener(type,action,false);
-    }
-} : function(target,type,action){
-    if(target){
-        target.attachEvent('on' + type,action,false);
-    }
-}
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var ctx = canvas.getContext('2d');
+if (screen.width > 900){
+    canvas.height = screen.height;
+    canvas.width = screen.width/1.7;
+    var pc = true;
+}else{
+    canvas.height = screen.height*2.5;
+    canvas.width = screen.width*2.1;
+    pc = false;
+}
+
 var Ay = 0;
 var Vy = 0;
 var score = 0;
@@ -35,15 +35,18 @@ var flag = false;
 var clock;
 var base_image = new Image();
 base_image.src = '../hacker+/Dream_Fast_Ball_Sprite.png';
+var mobile = new Image();
+mobile.src = '../hacker+/mobile.png';
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var ball = {
     x_coordinate: canvas.width / 2,
-    y_coordinate: canvas.height * 5 / 6,
-    r: 6,
+    y_coordinate: canvas.height * 2/3,
+    r: canvas.height/100,
     color: color[Math.floor(Math.random() * color.length)],
-    villa : true
+    villa: true
 };
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 var scroll = function(y) {
@@ -75,10 +78,10 @@ function fegu() {
             clock = 0;
         }
     }
-    huddle.push(new circles(canvas.width / 2, y - 950 - 0 * 400, 0, 0.02 + 0 * 0.005, true, true, clock));
-    huddle.push(new pipes(canvas.width / 2, y - 950 - 1 * 400, 1, true, true, clock, color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)]));
-    huddle.push(new hpipes(canvas.width / 2, y - 950 - 2 * 400, 5, true, true, clock, color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)]));
-    huddle.push(new dcircles(canvas.width / 2, y - 950 - 3 * 400, 0, 0.02 + 0 * 0.005, true, true, clock));
+    huddle.push(new circles(canvas.width / 2, y - 1200 - 0 * (canvas.height/1.8), 0, 0.03 + 0 * 0.0005, true, true,clock));
+    huddle.push(new pipes(canvas.width / 2, y - 1200 - 1 * (canvas.height/1.8), 1, true, true, clock, color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)]));
+    huddle.push(new hpipes(canvas.width / 2, y - 1200 - 2 * (canvas.height/1.8), 5, true, true, clock, color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)]));
+    huddle.push(new dcircles(canvas.width / 2, y - 1200 - 3 * (canvas.height/1.8), 0, 0.02 + 0 * 0.05, true, true, clock));
 
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -114,14 +117,14 @@ function run() {
     }
     if (loop == true) {
         ctx.drawImage(background, 0, 0);
-        drawStar(canvas.width/2, scroll(-1000), 7, 10, 15, -18, '#0353A4', 'white', 3);
-        drawStar(canvas.width/2, scroll(-1600), 7, 10, 15, -18, '#0353A4', 'white', 3);
-        drawStar(canvas.width/2, scroll(y - 950 - 8 * 400), 7, 10, 15, -18, '#0353A4', 'white', 3);
-        drawStar(canvas.width/2, scroll(y - 950 - 10 * 400), 7, 10, 15, -18, '#0353A4', 'white', 3);
-        drawStar(canvas.width/2, scroll(y - 950 - 18 * 400), 7, 10, 15, -18, '#0353A4', 'white', 3);
-        drawStar(canvas.width/2, scroll(y - 950 - 15 * 400), 7, 10, 15, -18, '#0353A4', 'white', 3);
-        drawStar(canvas.width/2, scroll(y - 950 - 26 * 400), 7, 10, 15, -18, '#0353A4', 'white', 3);
-        drawStar(canvas.width/2, scroll(y - 950 - 29 * 400), 7, 10, 15, -18, '#0353A4', 'white', 3);
+        drawStar(canvas.width/2, scroll(y - 1200 - 4 * (canvas.height/1.8)), 10, 20, 15, -18, '#0353A4', 'white', 3);
+        drawStar(canvas.width/2, scroll(y - 1200 - 6 * (canvas.height/1.8)), 10, 20, 15, -18, '#0353A4', 'white', 3);
+        drawStar(canvas.width/2, scroll(y - 1200 - 8 * (canvas.height/1.8)), 10, 20, 15, -18, '#0353A4', 'white', 3);
+        drawStar(canvas.width/2, scroll(y - 1200 - 10 * (canvas.height/1.8)), 10, 20, 15, -18, '#0353A4', 'white', 3);
+        drawStar(canvas.width/2, scroll(y - 1200 - 18 * (canvas.height/1.8)), 10, 20, 15, -18, '#0353A4', 'white', 3);
+        drawStar(canvas.width/2, scroll(y - 1200 - 15 * (canvas.height/1.8)), 10, 20, 15, -18, '#0353A4', 'white', 3);
+        drawStar(canvas.width/2, scroll(y - 1200 - 26 * (canvas.height/1.8)), 10, 20, 15, -18, '#0353A4', 'white', 3);
+        drawStar(canvas.width/2, scroll(y - 1200 - 29 * (canvas.height/1.8)), 10, 20, 15, -18, '#0353A4', 'white', 3);
         createhuddle_();
         jump();   
         let bangoo = localStorage.getArray('hknama');
@@ -137,10 +140,10 @@ function run() {
             igloo = assa[assa.length - 1];
         }
         assa[assa.length - 1]
-        ctx.font = "30px arial";
+        ctx.font = canvas.height/20 +"px arial";
         ctx.fillStyle = "white";
-        ctx.fillText(score, canvas.width/26.6, 60 );
-        ctx.fillText('High Score: ' + igloo, canvas.width/1.45, 60);
+        ctx.fillText(score, 20, 100);
+        ctx.fillText(igloo, canvas.width - 140, 100);
     } else {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(background, 0, 0);
@@ -153,10 +156,12 @@ function run() {
         if (score == 0) {
             score++;
         }
-        ctx.fillText('Game Over', canvas.width / 2.3, 100);
-        ctx.fillText('Score: ' + score , canvas.width / 2.3, 300);
-        ctx.fillText('High Score: ' + (gijya[gijya.length - 1]), canvas.width / 2.5, 400);
-        ctx.fillText('Click uparrow to refresh high score', 80, 500);
+        document.getElementById('restart').style.display = 'block';
+        ctx.fillText('Score: ' + score , canvas.width / 3, canvas.height/3);
+        ctx.fillText('High Score: ' + gijya[gijya.length - 1], canvas.width / 4, canvas.height/2);
+        ctx.font = canvas.height/35 +"px arial";
+        ctx.fillStyle = "white";
+        ctx.fillText('Click to update high score', 10 , canvas.height/1.8);
     }
 }
 
@@ -164,20 +169,25 @@ function run() {
 
 function jump() {
 
-    if (ball.y_coordinate < 300) {
-        screen -= -1.5;
+    if (ball.y_coordinate < canvas.height/2) {
+        screen -= -canvas.height/400;
     }
     ball.y_coordinate += Vy - Ay;
-    Ay -= 0.3;
-    if (ball.y_coordinate + ball.r > 627 && end == false) {
+    Ay -= canvas.height/2500;
+    if (ball.y_coordinate + ball.r > canvas.height && end == false) {
         terminate();
     }
 
-    if ((ball.y_coordinate  < scroll(-1000)  && ball.y_coordinate > scroll(-1600))|| (score < 11 && score > 8 )|| (score < 19 && score > 15 ) || (score < 30 && score > 26 ) )  {
+
+    if ((score < 7 && score > 4 )|| (score < 11 && score > 8 )|| (score < 19 && score > 15 ) || (score < 30 && score > 26 )){
         ball.villa = false;
-        ctx.drawImage(base_image, ball.x_coordinate-15, ball.y_coordinate-15);
+        if (pc == true){
+            ctx.drawImage(base_image, ball.x_coordinate-15, ball.y_coordinate-15);
+        }else{
+            ctx.drawImage(mobile, ball.x_coordinate-40, ball.y_coordinate-40);
+        }
+        
         ctx.fillStyle = "white";
-        ctx.fillText('PowerUP!!', 10, 500);
     }else{
         ball.villa = true;
         ctx.beginPath();
@@ -204,7 +214,7 @@ function createhuddle_() {
     for (x = post; x < huddle.length; x++) {
         huddle[x].create(x);
 
-        if (ball.y_coordinate + 6 < scroll(huddle[x].yo) + 6 && ball.y_coordinate > scroll(huddle[x].yo) - 6 && huddle[x].test == true) {
+        if (ball.y_coordinate + ball.r < scroll(huddle[x].yo) + ball.r && ball.y_coordinate > scroll(huddle[x].yo) - ball.r && huddle[x].test == true) {
             score++;
             huddle[x].test = false;
         }
@@ -235,8 +245,8 @@ class circles {
 
 
         for (var i = 0; i < 40; i++) {
-            x0 = 100 * Math.cos(this.rot * (Math.PI / 180)) + this.x_coordinate;
-            y0 = 100 * Math.sin(this.rot * (Math.PI / 180)) + scroll(this.yo);
+            x0 = canvas.height/7 * Math.cos(this.rot * (Math.PI / 180)) + this.x_coordinate;
+            y0 = canvas.height/7 * Math.sin(this.rot * (Math.PI / 180)) + scroll(this.yo);
             if (i < 10) {
                 color = '#F8333C';
             } else if (i >= 10 && i < 20) {
@@ -247,7 +257,7 @@ class circles {
                 color = '#DBD5B5';
             }
             ctx.beginPath();
-            ctx.arc(x0, y0, 6, Math.PI / 180 * 0, Math.PI / 180 * 360, true);
+            ctx.arc(x0, y0, ball.r, Math.PI / 180 * 0, Math.PI / 180 * 360, true);
             ctx.closePath();
             ctx.fillStyle = color;
             ctx.fill();
@@ -260,18 +270,17 @@ class circles {
 
 
 
-            if (x0 - 6 <= ball.x_coordinate + 6 && x0 + 6 >= ball.x_coordinate - 6 && y0 - 6 <= ball.y_coordinate + 6 && y0 + 6 >= ball.y_coordinate - 6 && ball.villa == true) {
+            if (x0 -  ball.r <= ball.x_coordinate +  ball.r && x0 +  ball.r >= ball.x_coordinate -  ball.r && y0 -  ball.r <= ball.y_coordinate +  ball.r && y0 +  ball.r >= ball.y_coordinate - ball.r && ball.villa == true ) {
                 if (ball.color != color) {
                     terminate();
                 }
             }
-
         }
     }
     remove(i) {
-        if (scroll(this.yo - 100) > canvas.height) {
+        if (scroll(this.yo - canvas.height/6) > canvas.height) {
             huddle.splice(i, 1);
-            huddle.push(new circles(canvas.width / 2, this.yo - 1600, 0, 0.02 + this.theta + 0.00025, true, true));
+            huddle.push(new circles(canvas.width / 2, this.yo - (canvas.height/1.8)*4, 0, this.theta + 0.0025, true, true));
         }
     }
 }
@@ -294,44 +303,44 @@ class pipes {
     }
     create(i) {
         ctx.fillStyle = this.color1;
-        ctx.fillRect(this.x_coordinate - canvas.width/133.3, scroll(this.yo) + 70, 12, -140);
+        ctx.fillRect(this.x_coordinate - canvas.width/133.3, scroll(this.yo) + canvas.height/8.57,canvas.width/66.66, -canvas.height/4.28);
 
         ctx.fillStyle = this.color2;
-        ctx.fillRect(this.x_coordinate + canvas.width/8, scroll(this.yo) + 50, 12, -100);
+        ctx.fillRect(this.x_coordinate + canvas.width/8, scroll(this.yo) + canvas.height/12, canvas.width/66.66, -canvas.height/6);
 
         ctx.fillStyle = this.color3;
-        ctx.fillRect(this.x_coordinate + canvas.width/4, scroll(this.yo) + 70, 12, -140);
+        ctx.fillRect(this.x_coordinate + canvas.width/4, scroll(this.yo) + canvas.height/8.57, canvas.width/66.66, -canvas.height/4.28);
   
         ctx.fillStyle = this.color1;
-        ctx.fillRect(this.x_coordinate - canvas.width/8, scroll(this.yo) + 40, 12, -80);
+        ctx.fillRect(this.x_coordinate - canvas.width/8, scroll(this.yo) + canvas.height/15, canvas.width/66.66, -canvas.height/7.5);
 
         ctx.fillStyle = this.color3;
-        ctx.fillRect(this.x_coordinate - canvas.width/4, scroll(this.yo) + 50, 12, -100);
+        ctx.fillRect(this.x_coordinate - canvas.width/4, scroll(this.yo) + canvas.height/12, canvas.width/66.66, -canvas.height/6);
 
 
 
 
         this.x_coordinate += this.oblique;
 
-        if (this.x_coordinate + 300 + 6 > canvas.width) {
+        if (this.x_coordinate + canvas.width/2.66 + canvas.width/133.32 > canvas.width) {
             this.oblique = this.oblique * -1;
         }
-        if (this.x_coordinate - 300 < 0) {
+        if (this.x_coordinate - canvas.width/2.66 < 0) {
             this.oblique = this.oblique * -1;
         }
 
-        if (((ball.x_coordinate - 6 <= this.x_coordinate - canvas.width/4.25 && ball.x_coordinate + 6 >= this.x_coordinate - canvas.width/4 && ball.y_coordinate - 6 <= scroll(this.yo) + 50 && ball.y_coordinate >= scroll(this.yo) - 50 && ball.color != this.color3) ||
-            (ball.x_coordinate - 6 <= this.x_coordinate - canvas.width/9.09 && ball.x_coordinate + 6 >= this.x_coordinate - canvas.width/8 && ball.y_coordinate - 6 <= scroll(this.yo) + 40 && ball.y_coordinate >= scroll(this.yo) - 40 && ball.color != this.color1) ||
-            (ball.x_coordinate - 6 <= this.x_coordinate + canvas.width/3.77 && ball.x_coordinate + 6 >= this.x_coordinate + canvas.width/4 && ball.y_coordinate - 6 <= scroll(this.yo) + 70 && ball.y_coordinate >= scroll(this.yo) - 70 && ball.color != this.color3) ||
-            (ball.x_coordinate - 6 <= this.x_coordinate + canvas.width/7.14 && ball.x_coordinate + 6 >= this.x_coordinate + canvas.width/8 && ball.y_coordinate - 6 <= scroll(this.yo) + 50 && ball.y_coordinate >= scroll(this.yo) - 50 && ball.color != this.color2) ||
-            (ball.x_coordinate - 6 <= this.x_coordinate + canvas.width/133.3 && ball.x_coordinate + 6 >= this.x_coordinate - canvas.width/133.3 && ball.y_coordinate - 6 <= scroll(this.yo) + 70 && ball.y_coordinate >= scroll(this.yo) - 70 && ball.color != this.color1))&& ball.villa == true) {
+        if (((ball.x_coordinate - ball.r <= this.x_coordinate - canvas.width/4.25 && ball.x_coordinate + ball.r >= this.x_coordinate - canvas.width/4 && ball.y_coordinate - ball.r <= scroll(this.yo) + 50 && ball.y_coordinate >= scroll(this.yo) - canvas.height/12 && ball.color != this.color3) ||
+            (ball.x_coordinate - ball.r <= this.x_coordinate - canvas.width/9.09 && ball.x_coordinate + ball.r >= this.x_coordinate - canvas.width/8 && ball.y_coordinate - ball.r <= scroll(this.yo) + 40 && ball.y_coordinate >= scroll(this.yo) - canvas.height/15 && ball.color != this.color1) ||
+            (ball.x_coordinate - ball.r <= this.x_coordinate + canvas.width/3.77 && ball.x_coordinate + ball.r >= this.x_coordinate + canvas.width/4 && ball.y_coordinate - ball.r <= scroll(this.yo) + 70 && ball.y_coordinate >= scroll(this.yo) - canvas.height/8.57 && ball.color != this.color3) ||
+            (ball.x_coordinate - ball.r <= this.x_coordinate + canvas.width/7.14 && ball.x_coordinate + ball.r >= this.x_coordinate + canvas.width/8 && ball.y_coordinate - ball.r <= scroll(this.yo) + 50 && ball.y_coordinate >= scroll(this.yo) - canvas.height/12 && ball.color != this.color2) ||
+            (ball.x_coordinate - ball.r <= this.x_coordinate + canvas.width/133.3 && ball.x_coordinate + ball.r >= this.x_coordinate - canvas.width/133.3 && ball.y_coordinate - ball.r <= scroll(this.yo) + 70 && ball.y_coordinate >= scroll(this.yo) - canvas.height/8.57 && ball.color != this.color1))&& ball.villa == true) {
             terminate();
         }
     }
     remove(i) {
-        if (scroll(this.yo - 100) > canvas.height) {
+        if (scroll(this.yo - canvas.height/6) > canvas.height) {
             huddle.splice(i, 1);
-            huddle.push(new pipes(canvas.width / 2, this.yo - 1600, this.oblique + 0.05, true, true, clock, color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)]));
+            huddle.push(new pipes(canvas.width / 2, this.yo - canvas.height/1.8*4, this.oblique + 0.05, true, true, clock, color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)]));
 
         }
     }
@@ -352,32 +361,32 @@ class hpipes {
     }
     create(i) {
         ctx.fillStyle = this.color1;
-        ctx.fillRect(this.x_coordinate - canvas.width/8, scroll(this.yo) + 10, 200, -20);
+        ctx.fillRect(this.x_coordinate - canvas.width/8, scroll(this.yo) + canvas.height/60, canvas.width/4, -canvas.height/30);
 
         ctx.fillStyle = this.color2;
-        ctx.fillRect(this.x_coordinate - canvas.width/8, scroll(this.yo) + 80, 200, -20);
+        ctx.fillRect(this.x_coordinate - canvas.width/8, scroll(this.yo) + canvas.height/7.5, canvas.width/4, -canvas.height/30);
 
         ctx.fillStyle = this.color4;
-        ctx.fillRect(this.x_coordinate - canvas.width/8, scroll(this.yo) - 80, 200, +20);
+        ctx.fillRect(this.x_coordinate - canvas.width/8, scroll(this.yo) - canvas.height/7.5, canvas.width/4, +canvas.height/30);
 
         this.x_coordinate += this.oblique
 
-        if (this.x_coordinate + canvas.width/8 + 10 > canvas.width) {
+        if (this.x_coordinate + canvas.width/8 + canvas.height/60 > canvas.width) {
             this.oblique = this.oblique * -1;
         }
         if (this.x_coordinate - canvas.width/8 < 0) {
             this.oblique = this.oblique * -1;
         }
-        if (((ball.x_coordinate - 6 <= this.x_coordinate + canvas.width/8 && ball.x_coordinate + 6 >= this.x_coordinate - canvas.width/8 && ball.y_coordinate - 6 <= scroll(this.yo) + 10 && ball.y_coordinate + 6 >= scroll(this.yo) - 10 && ball.color != this.color1) ||
-            (ball.x_coordinate - 6 <= this.x_coordinate + canvas.width/8 && ball.x_coordinate + 6 >= this.x_coordinate - canvas.width/8 && ball.y_coordinate - 6 <= scroll(this.yo) + 80 && ball.y_coordinate + 6 >= scroll(this.yo) + 60 && ball.color != this.color2) ||
-            (ball.x_coordinate - 6 <= this.x_coordinate + canvas.width/8 && ball.x_coordinate + 6 >= this.x_coordinate - canvas.width/8 && ball.y_coordinate - 6 <= scroll(this.yo) - 60 && ball.y_coordinate + 6 >= scroll(this.yo) - 80 && ball.color != this.color4))&& ball.villa == true) {
+        if (((ball.x_coordinate - ball.r <= this.x_coordinate + canvas.width/8 && ball.x_coordinate + ball.r >= this.x_coordinate - canvas.width/8 && ball.y_coordinate - ball.r <= scroll(this.yo) + canvas.height/60 && ball.y_coordinate + ball.r >= scroll(this.yo) - canvas.height/60 && ball.color != this.color1) ||
+            (ball.x_coordinate - ball.r <= this.x_coordinate + canvas.width/8 && ball.x_coordinate + ball.r >= this.x_coordinate - canvas.width/8 && ball.y_coordinate - ball.r <= scroll(this.yo) + canvas.height/7.5 && ball.y_coordinate + ball.r >= scroll(this.yo) + canvas.height/10 && ball.color != this.color2) ||
+            (ball.x_coordinate - ball.r <= this.x_coordinate + canvas.width/8 && ball.x_coordinate + ball.r >= this.x_coordinate - canvas.width/8 && ball.y_coordinate - ball.r <= scroll(this.yo) - canvas.height/10 && ball.y_coordinate + ball.r >= scroll(this.yo) - canvas.height/7.5 && ball.color != this.color4))&& ball.villa == true) {
             terminate();
         }
     }
     remove(i) {
-        if (scroll(this.yo - 100) > canvas.height) {
+        if (scroll(this.yo - canvas.height/6) > canvas.height) {
             huddle.splice(i, 1);
-            huddle.push(new hpipes(canvas.width / 2,this.yo - 1600 ,this.oblique += 0.05, true, true, clock, color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)]));
+            huddle.push(new hpipes(canvas.width / 2,this.yo - canvas.height/1.8*4 ,this.oblique += 0.05, true, true, clock, color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)], color[Math.floor(Math.random() * color.length)]));
         }
     }
 }
@@ -400,8 +409,8 @@ class dcircles {
 
 
         for (var i = 0; i < 40; i++) {
-            x0 = 70 * Math.cos(this.rot * (Math.PI / 180)) + this.x_coordinate - 73;
-            y0 = 70 * Math.sin(this.rot * (Math.PI / 180)) + scroll(this.yo);
+            x0 = canvas.height/13 * Math.cos(this.rot * (Math.PI / 180)) + this.x_coordinate - (canvas.height/13+ball.r/2.8);
+            y0 = canvas.height/13 * Math.sin(this.rot * (Math.PI / 180)) + scroll(this.yo);
             if (i < 10) {
                 color = '#F8333C';
             } else if (i >= 10 && i < 20) {
@@ -412,13 +421,14 @@ class dcircles {
                 color = '#DBD5B5';
             }
             ctx.beginPath();
-            ctx.arc(x0, y0, 6, Math.PI / 180 * 0, Math.PI / 180 * 360, true);
+            ctx.arc(x0, y0, ball.r/1.4, Math.PI / 180 * 0, Math.PI / 180 * 360, true);
             ctx.closePath();
             ctx.fillStyle = color;
             ctx.fill();
+            
 
-            x0 = 70 * Math.cos(this.rot * (Math.PI / 180)) + this.x_coordinate + 73;
-            y0 = 70 * Math.sin(this.rot * (Math.PI / 180)) + scroll(this.yo);
+            x0 = canvas.height/13 * Math.cos(this.rot * (Math.PI / 180)) + this.x_coordinate + canvas.height/13+ball.r/2.8;
+            y0 = canvas.height/13 * Math.sin(this.rot * (Math.PI / 180)) + scroll(this.yo);
             if (i < 10) {
                 color = '#2B9EB3';
             } else if (i >= 10 && i < 20) {
@@ -429,10 +439,11 @@ class dcircles {
                 color = '#FCAB10';
             }
             ctx.beginPath();
-            ctx.arc(x0, y0, 6, Math.PI / 180 * 0, Math.PI / 180 * 360, true);
+            ctx.arc(x0, y0, ball.r/1.4, Math.PI / 180 * 0, Math.PI / 180 * 360, true);
             ctx.closePath();
             ctx.fillStyle = color;
             ctx.fill();
+            
 
             if (this.dir == 1) {
                 this.rot -= rad + this.theta;
@@ -440,34 +451,29 @@ class dcircles {
                 this.rot += rad + this.theta;
             }
 
-            if (x0 - 6 <= ball.x_coordinate + 6 && x0 + 6 >= ball.x_coordinate - 6 && y0 - 6 <= ball.y_coordinate + 6 && y0 + 6 >= ball.y_coordinate - 6 && ball.color != color && ball.villa == true){
+            if (x0 - ball.r/2.8 <= ball.x_coordinate + ball.r && x0 + ball.r/2.8 >= ball.x_coordinate - ball.r && y0 - ball.r/2.8 <= ball.y_coordinate + ball.r && y0 + ball.r/2.8 >= ball.y_coordinate - ball.r && ball.color != color && ball.villa == true){
                 terminate();
             }
         }
     }
     remove(i) {
-        if (scroll(this.yo - 100) > canvas.height) {
+        if (scroll(this.yo - canvas.height/6) > canvas.height) {
             huddle.splice(i, 1);
-            huddle.push(new dcircles(canvas.width / 2, this.yo - 1600, 0, 0.02 + this.theta + 0.00025, true, true));
+            huddle.push(new dcircles(canvas.width / 2, this.yo - canvas.height/1.8*4, 0, this.theta + 0.025, true, true));
         }
     }
 }
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-addEvent(document,'keydown',function(e){
-    e = e || window.event;
-    var key = e.which || e.keyCode;
-    if(key===38){
-        if (start == false) {
+function saaa() {
+    if (start == false) {
         start = true;
         run();
-        }
-        document.getElementById('instructions').style.display = 'none';
-        Ay = 0;
-        Vy = -4; 
     }
-});
+    document.getElementById('instructions').style.display = 'none';
+    Ay = 0;
+    Vy = -canvas.height/150;
+  };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -483,4 +489,7 @@ function resume() {
         start = true;
         run();
     }
+}
+function restart(){
+    location.reload();
 }

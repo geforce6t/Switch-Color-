@@ -5,9 +5,14 @@ var ctx = canvas.getContext('2d');
 if (screen.width > 900){
     canvas.height = screen.height;
     canvas.width = screen.width/1.7;
+    var pc = true;
 }else{
     canvas.height = screen.height*2.5;
     canvas.width = screen.width*2.1;
+    pc = false;
+}
+if (pc == false){
+    alert('zoom out to 100% first');
 }
 
 var Ay = 0;

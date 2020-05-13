@@ -11,9 +11,7 @@ if (screen.width > 900){
     canvas.width = screen.width*2.1;
     pc = false;
 }
-if (pc == false){
-    alert('zoom out to 100% first');
-}
+
 
 var Ay = 0;
 var Vy = 0;
